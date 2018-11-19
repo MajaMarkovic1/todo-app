@@ -11,6 +11,7 @@ import { LoginComponent } from './components/login/login.component';
 import { TodoComponent } from './components/todo/todo.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { RegisterComponent } from './components/register/register.component';
+import { CreateTodoComponent } from './components/create-todo/create-todo.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,9 @@ import { RegisterComponent } from './components/register/register.component';
     LoginComponent,
     TodoComponent,
     NavbarComponent,
-    RegisterComponent
+    RegisterComponent,
+    CreateTodoComponent,
+
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,8 @@
+ul {
+    display: flex;
+    justify-content: space-between;
+}
+
+ul div a {
+    margin-right: 1rem;
+}

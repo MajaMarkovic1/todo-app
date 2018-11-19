@@ -1,0 +1,20 @@
+<div class="container" *ngIf="todo">
+
+  {{ todo.todo_item }}
+  <!-- <form (ngSubmit)="update(todo)">
+      <div class="col-4 form-group">
+        <label for="todo_item">Name</label>
+        <input type="text" class="form-control" 
+        name="todo.todo_item" required
+        [(ngModel)]="todo.todo_item">
+      </div>
+      <div class="col-4">
+        <input type="checkbox" 
+        [checked]="todo.is_priority" 
+        (change)="todo.is_priority = !todo.is_priority" />
+          Priority 
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="todo.todo_item === ''">Submit</button>
+  </form><br> -->
+</div>
+

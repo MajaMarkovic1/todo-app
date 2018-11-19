@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Todo } from '../models/todo';
 import { Observable, of } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
 
 
@@ -11,6 +11,12 @@ import { catchError } from 'rxjs/operators';
 export class TodoService {
 
   private todosUrl = 'http://127.0.0.1:8000/api/todos';  // URL to web api
+
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type':  'application/json',
+    })
+  };
 
   constructor(
     private http: HttpClient    
@@ -22,6 +28,32 @@ export class TodoService {
       catchError(this.handleError('getTodos', []))
     );
     
+  }
+
+  getTodo(id: number): Observable<Todo> {
+    const url = `${this.todosUrl}/${id}`;
+    return this.http.get<Todo>(url).pipe(
+      catchError(this.handleError<Todo>(`getTodo id=${id}`))
+    );
+  }
+
+  add(todo) {
+    return this.http.post(this.todosUrl, todo, this.httpOptions).pipe(
+      catchError(this.handleError<Todo>('addedTodo'))
+    );
+  }
+
+
+  delete(todo){
+    return this.http.delete(`${this.todosUrl}/${todo.id}`).pipe(
+      catchError(this.handleError<Todo>(`deleteTodo`))
+    );
+  }
+
+  update(todo){
+    return this.http.put(`${this.todosUrl}/${todo.id}`, todo, this.httpOptions).pipe(
+      catchError(this.handleError<Todo>('updatedTodo'))
+    )
   }
 
   private handleError<T> (operation = 'operation', result?: T) {

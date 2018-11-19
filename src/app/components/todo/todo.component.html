@@ -1,6 +1,28 @@
-<h2>My todos:</h2>
-<ul class="todos" *ngFor="let todo of todos">
-  <li>
-    {{todo.todo_item}}
-  </li>
-</ul>
+<div class="container">
+  <form (ngSubmit)="add()">
+      <div class="col-4 form-group">
+        <label for="todo_item">Name</label>
+        <input type="text" class="form-control" 
+        name="newTodo.todo_item" required
+        [(ngModel)]="newTodo.todo_item">
+      </div>
+      <div class="col-4">
+        <input type="checkbox" 
+        [checked]="newTodo.is_priority" 
+        (change)="newTodo.is_priority = !newTodo.is_priority" />
+          Priority 
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="newTodo.todo_item === ''">Submit</button>
+  </form><br>
+  <h2>My todos:</h2>
+  <ul class="col-8" *ngFor="let todo of todos">
+    <li routerLink='/todos/{{todo.id}}'>
+      {{todo.todo_item}}
+    </li>
+    <div>
+      <a (click)="delete(todo)"><i class="fas fa-times"></i></a>
+      <a (click)="update(todo)"><i class="fas fa-edit"></i></a> 
+    </div> 
+  </ul>
+</div>
+
