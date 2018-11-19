@@ -1,7 +1,6 @@
 <div class="container" *ngIf="todo">
 
-  {{ todo.todo_item }}
-  <!-- <form (ngSubmit)="update(todo)">
+  <form (ngSubmit)="update(todo)">
       <div class="col-4 form-group">
         <label for="todo_item">Name</label>
         <input type="text" class="form-control" 
@@ -15,6 +14,6 @@
           Priority 
       </div>
       <button type="submit" class="btn btn-primary" [disabled]="todo.todo_item === ''">Submit</button>
-  </form><br> -->
+  </form><br>
 </div>
 

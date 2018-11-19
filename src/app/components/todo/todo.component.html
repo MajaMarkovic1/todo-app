@@ -16,12 +16,12 @@
   </form><br>
   <h2>My todos:</h2>
   <ul class="col-8" *ngFor="let todo of todos">
-    <li routerLink='/todos/{{todo.id}}'>
+    <li>
       {{todo.todo_item}}
     </li>
     <div>
       <a (click)="delete(todo)"><i class="fas fa-times"></i></a>
-      <a (click)="update(todo)"><i class="fas fa-edit"></i></a> 
+      <a routerLink='/todos/{{todo.id}}'><i class="fas fa-edit"></i></a> 
     </div> 
   </ul>
 </div>
