@@ -5,9 +5,10 @@
 ul {
     display: flex;
     justify-content: space-between;
+    margin: 2px;
 }
 
-ul div a {
+.priority-item a {
     margin-right: 1rem;
     color: black;
 }
@@ -19,4 +20,32 @@ form .post {
 .check {
     margin-top: 2rem;
 }
+
+.priority-item {
+    list-style-type: none;
+    
+}
+
+.priority-item a:hover {
+    color: rgb(233, 163, 163);
+}
+
+.todo-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.todo-list {
+    width: 40%;
+}
+
+.todo-done {
+    width: 40%;
+    
+}
+
+
+
+
+
 

@@ -1,7 +1,7 @@
 <div class="container">
   <form (ngSubmit)="add()">
     <div class="post">
-      <div class="col-6 form-group">
+      <div class="col-5 form-group">
         <h5>Create todo:</h5>
         <input type="text" class="form-control" 
         name="newTodo.todo_item" required
@@ -14,17 +14,46 @@
              Priority       
       </div>
     </div>
-    <button type="submit" class="btn btn-primary" [disabled]="newTodo.todo_item === ''">Submit</button>
+    <button type="submit" class="btn btn-secondary" [disabled]="newTodo.todo_item === ''">Submit</button>
   </form><br>
-  <h5 *ngIf="todos.length > 0">My todos:</h5><br>
-  <ul class="col-6" *ngFor="let todo of todos">
-    <li>
-      {{todo.todo_item}}
-    </li>
-    <div>
-      <a (click)="delete(todo)"><i class="fas fa-times"></i></a>
-      <a routerLink='/todos/{{todo.id}}'><i class="fas fa-edit"></i></a> 
-    </div> 
-  </ul>
+
+  <div class="todo-wrapper">
+    <div class="todo-list">
+        <h5 class="text-danger" *ngIf="todos.length > 0"><em>Priorities</em>:</h5>
+        <div *ngFor="let todo of todos">
+          <ul class="shadow p-2 bg-danger rounded" *ngIf="todo.is_priority">
+            <li class="priority-item">{{ todo.todo_item }}</li>
+            <div class="priority-item">
+              <a (click)="delete(todo)"><i class="fas fa-times"></i></a>
+              <a routerLink='/todos/{{todo.id}}'><i class="fas fa-edit"></i></a> 
+            </div> 
+          </ul>
+        </div><br>
+      
+        <h5 class="text-muted" *ngIf="todos.length > 0"><em>Todos</em>:</h5> 
+        <div *ngFor="let todo of todos">
+          <ul class="shadow p-2 rounded" *ngIf="!todo.is_priority" >
+            <li class="priority-item">
+              {{todo.todo_item}}
+            </li>
+            <div class="priority-item">
+              <a (click)="delete(todo)"><i class="fas fa-times"></i></a>
+              <a routerLink='/todos/{{todo.id}}'><i class="fas fa-edit"></i></a> 
+            </div> 
+          </ul>
+        </div>
+      </div>
+
+      <div class="todo-done">
+        <h5 *ngIf="todos.length > 0"><em>Done</em>:</h5>
+
+      </div>
+  </div>
+
+
+
+
+ 
+
 </div>
 
