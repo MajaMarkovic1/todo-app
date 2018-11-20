@@ -14,17 +14,24 @@ export class AuthService {
     private http: HttpClient
   ) { }
 
+  isAuthenticated() {
+    return !!localStorage.getItem('token');
+    
+  }
+
   login({email, password}) {
     return this.http.post(`${this.url}/login`, {email, password})
     .pipe(
       tap((response: any) => {
         localStorage.setItem('token', response.access_token);
+        // console.log(this.isAuthenticated());
       })
     );
   }
 
   logout(){
     localStorage.removeItem('token');
+    // console.log(this.isAuthenticated());
   }
 
   register({name, email, password}){
