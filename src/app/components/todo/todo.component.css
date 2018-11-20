@@ -1,3 +1,7 @@
+.container {
+    margin-top: 1rem;
+}
+
 ul {
     display: flex;
     justify-content: space-between;
@@ -7,3 +11,12 @@ ul div a {
     margin-right: 1rem;
     color: black;
 }
+
+form .post {
+    display: flex;
+}
+
+.check {
+    margin-top: 2rem;
+}
+

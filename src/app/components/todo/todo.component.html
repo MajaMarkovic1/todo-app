@@ -1,21 +1,23 @@
 <div class="container">
   <form (ngSubmit)="add()">
-      <div class="col-4 form-group">
-        <label for="todo_item">Name</label>
+    <div class="post">
+      <div class="col-6 form-group">
+        <h5>Create todo:</h5>
         <input type="text" class="form-control" 
         name="newTodo.todo_item" required
         [(ngModel)]="newTodo.todo_item">
       </div>
-      <div class="col-4">
+      <div class="col-4 check">
         <input type="checkbox" 
         [checked]="newTodo.is_priority" 
-        (change)="newTodo.is_priority = !newTodo.is_priority" />
-          Priority 
+        (change)="newTodo.is_priority = !newTodo.is_priority" /> 
+             Priority       
       </div>
-      <button type="submit" class="btn btn-primary" [disabled]="newTodo.todo_item === ''">Submit</button>
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="newTodo.todo_item === ''">Submit</button>
   </form><br>
-  <h2>My todos:</h2>
-  <ul class="col-8" *ngFor="let todo of todos">
+  <h5 *ngIf="todos.length > 0">My todos:</h5><br>
+  <ul class="col-6" *ngFor="let todo of todos">
     <li>
       {{todo.todo_item}}
     </li>
