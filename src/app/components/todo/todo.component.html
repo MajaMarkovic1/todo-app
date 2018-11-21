@@ -19,8 +19,8 @@
 
   <div class="todo-wrapper">
     <div class="todo-list">
-        <div class="todo-labels">
-          <h5 class="text-danger" *ngIf="todos.length > 0"><strong>Priorities</strong>:</h5>
+        <div class="todo-labels" *ngFor="let todo of priority()">
+          <h5 class="text-danger"><strong>Priorities</strong>:</h5>
           <h6 class="text-danger">Done</h6>
         </div>
         <div>
@@ -40,7 +40,7 @@
           </ul>
         </div><br><br>
       
-        <h5 class="todos" *ngIf="todos.length > 0"><strong>Todos</strong>:</h5> 
+        <h5 class="todos" *ngFor="let todo of notPriority()"><strong>Todos</strong>:</h5> 
         <div *ngFor="let todo of todos">
           <ul class="shadow p-2 rounded my-todos" *ngIf="!todo.is_priority" >
             <li>
@@ -55,7 +55,7 @@
       </div>
 
       <div class="todo-done">
-        <h5 class="text-info" *ngIf="todos.length > 0"><strong>Done</strong>:</h5>
+        <h5 class="text-info" *ngFor="let todo of doneTodos()"><strong>Done</strong>:</h5>
         <div *ngFor="let todo of todos">
           <ul class="shadow p-2 rounded bg-info" *ngIf="todo.is_done">
             <li>

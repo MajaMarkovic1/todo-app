@@ -1,5 +1,5 @@
 <div class="container" *ngIf="todo">
-  <form (ngSubmit)="update(todo)">
+  <form>
       <div class="post">
         <div class="col-6 form-group">
           <h5>Edit todo:</h5>
@@ -14,8 +14,8 @@
               Priority 
         </div>
       </div>
-      <button type="submit" class="btn btn-secondary">Submit</button>
-      <button type="submit" (click)="goBack" class="btn btn-secondary">Cancel</button>  
+      <button type="submit" (click)="update(todo)" class="btn btn-secondary">Submit</button>
+      <button type="submit" (click)="goBack()" class="btn btn-secondary">Cancel</button>  
     </form><br>
 </div>
 

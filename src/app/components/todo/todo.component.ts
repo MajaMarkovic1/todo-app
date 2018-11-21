@@ -36,6 +36,14 @@ export class TodoComponent implements OnInit {
     return this.todos.filter(todo=> todo['is_priority'] && !todo['is_done']);
   }
 
+  notPriority() {
+    return this.todos.filter(todo=> !todo['is_priority'] && !todo['is_done']);    
+  }
+
+  doneTodos() {
+    return this.todos.filter(todo=> todo['is_done']);        
+  }
+
   add(): void {
     this.todoService.add(this.newTodo)
       .subscribe((todo) => {
