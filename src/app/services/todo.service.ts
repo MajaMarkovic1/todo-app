@@ -56,6 +56,12 @@ export class TodoService {
     )
   }
 
+  changeState(todo){
+    return this.http.put(`${this.todosUrl}/${todo.id}`, todo).pipe(
+      catchError(this.handleError<Todo>('updatedTodo'))
+    )
+  }
+
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
 

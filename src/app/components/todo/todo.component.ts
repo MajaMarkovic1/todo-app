@@ -32,6 +32,10 @@ export class TodoComponent implements OnInit {
       .subscribe(todos => this.todos = todos);
   }
 
+  priority() {
+    return this.todos.filter(todo=> todo['is_priority'] && !todo['is_done']);
+  }
+
   add(): void {
     this.todoService.add(this.newTodo)
       .subscribe((todo) => {
@@ -50,6 +54,11 @@ export class TodoComponent implements OnInit {
       const index = this.todos.indexOf(todo);
       this.todos.splice(index, 1);
     })
+  }
+
+  changeStateTodo(todo: Todo): void {
+    todo.is_done = true;    
+    this.todoService.changeState(todo).subscribe();
   }
 
 }

@@ -2,32 +2,13 @@
     margin-top: 1rem;
 }
 
-ul {
+form .post-todo {
     display: flex;
-    justify-content: space-between;
-    margin: 2px;
-}
-
-.priority-item a {
-    margin-right: 1rem;
-    color: black;
-}
-
-form .post {
-    display: flex;
-}
-
-.check {
-    margin-top: 2rem;
-}
-
-.priority-item {
-    list-style-type: none;
     
 }
 
-.priority-item a:hover {
-    color: rgb(233, 163, 163);
+form .post-todo .check {
+    margin-top: 2rem;
 }
 
 .todo-wrapper {
@@ -39,10 +20,83 @@ form .post {
     width: 40%;
 }
 
-.todo-done {
-    width: 40%;
+.todo-list .todo-labels {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.todos {
+    margin-bottom: 1rem;
     
 }
+
+.todo-done {
+    width: 40%; 
+}
+
+.todo-list div .priorities{
+    color: white;
+    margin-bottom: 3px;  
+}
+
+.todo-list div .priorities li {
+    display: flex;
+    justify-content: space-between;
+}
+
+.todo-list div .priorities li .todo {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+}
+
+.todo-list div .priorities li .todo a {
+    margin-right: 1rem;
+    color: white;
+}
+
+.todo-list div .priorities li .todo a:hover {
+    color: rgb(99, 40, 40);
+}
+
+.todo-list div .my-todos li {
+    display: flex;
+    justify-content: space-between;
+}
+
+.todo-list div .my-todos li div a {
+    margin-right: 1rem;
+    color: black;
+    
+}
+
+.todo-list div .my-todos li div a:hover {
+    color: gray;
+       
+}
+
+.todo-done div ul {
+    margin-bottom: 3px;
+
+}
+.todo-done div ul li {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+    color: white;
+}
+
+.todo-done div ul li a:hover {
+    color: rgb(46, 40, 99);
+}
+
+.text-info {
+    margin-bottom: 1.5rem;
+}
+
+
+
 
 
 

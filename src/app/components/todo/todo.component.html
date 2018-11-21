@@ -1,6 +1,6 @@
 <div class="container">
   <form (ngSubmit)="add()">
-    <div class="post">
+    <div class="post-todo">
       <div class="col-5 form-group">
         <h5>Create todo:</h5>
         <input type="text" class="form-control" 
@@ -19,34 +19,51 @@
 
   <div class="todo-wrapper">
     <div class="todo-list">
-        <h5 class="text-danger" *ngIf="todos.length > 0"><em>Priorities</em>:</h5>
-        <div *ngFor="let todo of todos">
-          <ul class="shadow p-2 bg-danger rounded" *ngIf="todo.is_priority">
-            <li class="priority-item">{{ todo.todo_item }}</li>
-            <div class="priority-item">
-              <a (click)="delete(todo)"><i class="fas fa-times"></i></a>
-              <a routerLink='/todos/{{todo.id}}'><i class="fas fa-edit"></i></a> 
-            </div> 
-          </ul>
-        </div><br>
-      
-        <h5 class="text-muted" *ngIf="todos.length > 0"><em>Todos</em>:</h5> 
-        <div *ngFor="let todo of todos">
-          <ul class="shadow p-2 rounded" *ngIf="!todo.is_priority" >
-            <li class="priority-item">
-              {{todo.todo_item}}
+        <div class="todo-labels">
+          <h5 class="text-danger" *ngIf="todos.length > 0"><strong>Priorities</strong>:</h5>
+          <h6 class="text-danger">Done</h6>
+        </div>
+        <div>
+          <ul class="priorities" *ngFor="let todo of priority()">
+            <li>
+              <div class="shadow p-2 bg-danger rounded todo">
+                <label>{{ todo.todo_item }}</label>
+                <div>
+                  <a (click)="delete(todo)"><i class="fas fa-times"></i></a>
+                  <a routerLink='/todos/{{todo.id}}'><i class="fas fa-edit"></i></a> 
+                </div> 
+              </div>
+              <input type="checkbox" 
+                [checked]="todo.is_done" 
+                (click)="changeStateTodo(todo)"/>
             </li>
-            <div class="priority-item">
-              <a (click)="delete(todo)"><i class="fas fa-times"></i></a>
-              <a routerLink='/todos/{{todo.id}}'><i class="fas fa-edit"></i></a> 
-            </div> 
+          </ul>
+        </div><br><br>
+      
+        <h5 class="todos" *ngIf="todos.length > 0"><strong>Todos</strong>:</h5> 
+        <div *ngFor="let todo of todos">
+          <ul class="shadow p-2 rounded my-todos" *ngIf="!todo.is_priority" >
+            <li>
+              <label>{{todo.todo_item}}</label>
+              <div>
+                <a (click)="delete(todo)"><i class="fas fa-times"></i></a>
+                <a routerLink='/todos/{{todo.id}}'><i class="fas fa-edit"></i></a> 
+              </div> 
+            </li>
           </ul>
         </div>
       </div>
 
       <div class="todo-done">
-        <h5 *ngIf="todos.length > 0"><em>Done</em>:</h5>
-
+        <h5 class="text-info" *ngIf="todos.length > 0"><strong>Done</strong>:</h5>
+        <div *ngFor="let todo of todos">
+          <ul class="shadow p-2 rounded bg-info" *ngIf="todo.is_done">
+            <li>
+              <label>{{todo.todo_item}}</label>
+              <a (click)="delete(todo)"><i class="fas fa-times"></i></a>
+            </li>
+          </ul>
+        </div>
       </div>
   </div>
 
