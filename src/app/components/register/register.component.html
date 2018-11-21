@@ -7,6 +7,7 @@
           <div class="input-group">
             <input name="name" required type="name" [(ngModel)]="name" class="form-control here"/>
           </div>
+          <div *ngIf="err.name" class="alert alert-warning">{{ err.name }}</div> 
         </div>
       </div>
       <div class="form-group row">
@@ -15,6 +16,7 @@
           <div class="input-group">
             <input name="email" required type="email" [(ngModel)]="email" class="form-control here"/>
           </div>
+          <div *ngIf="err.email" class="alert alert-warning">{{ err.email }}</div>           
         </div>
       </div>
       <div class="form-group row">
@@ -23,6 +25,7 @@
           <div class="input-group">
             <input name="password" required type="password" [(ngModel)]="password" class="form-control here"/>
           </div>
+          <div *ngIf="err.password" class="alert alert-warning">{{ err.password }}</div>                     
         </div>
       </div>
       <input type="submit" class="btn btn-secondary"/>

@@ -15,6 +15,7 @@
         <div class="input-group">
           <input name="password" required type="password" [(ngModel)]="password" class="form-control here"/>
         </div>
+        <div *ngIf="err.error" class="alert alert-warning">{{ err.error }}</div>                                 
       </div>
     </div>
     <input type="submit" class="btn btn-secondary"/>

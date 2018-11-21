@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { tap } from 'rxjs/operators';
-
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { tap, catchError } from 'rxjs/operators';
+import { throwError  } from 'rxjs'
 
 @Injectable({
   providedIn: 'root'
@@ -25,8 +25,9 @@ export class AuthService {
       tap((response: any) => {
         localStorage.setItem('token', response.access_token);
         // console.log(this.isAuthenticated());
-      })
-    );
+      }),
+      catchError(this.handleError)
+    )
   }
 
   logout(){
@@ -36,5 +37,10 @@ export class AuthService {
 
   register({name, email, password}){
     return this.http.post(`${this.url}/register`, {name, email, password})
+      .pipe(catchError(this.handleError))
+  }
+
+  handleError(error: HttpErrorResponse){
+    return throwError(error || 'Server error')
   }
 }
