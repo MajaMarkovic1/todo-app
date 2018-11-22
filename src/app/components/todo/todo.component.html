@@ -1,0 +1,71 @@
+<div class="container">
+  <form (ngSubmit)="add()">
+    <div class="post-todo">
+      <div class="col-5 form-group">
+        <h5>Create todo:</h5>
+        <input type="text" class="form-control" 
+        name="newTodo.todo_item" required
+        [(ngModel)]="newTodo.todo_item">
+        <div *ngIf="err.todo_item" class="alert alert-warning">{{ err.todo_item }}</div>  
+      </div>
+      <div class="col-4 check">
+        <input type="checkbox" 
+        [checked]="newTodo.is_priority" 
+        (change)="newTodo.is_priority = !newTodo.is_priority" /> 
+             Priority       
+      </div>
+    </div>
+    <button type="submit" class="btn btn-secondary">Submit</button>
+  </form><br>
+
+  <div class="todo-wrapper">
+    <div class="todo-list">
+        <div class="todo-labels" *ngIf="priority().length > 0">
+          <h5 class="text-danger"><strong>Priorities</strong>:</h5>
+          <h6 class="text-danger">Check done</h6>
+        </div>
+        <ul class="priorities" *ngFor="let todo of priority()">
+          <li>
+            <div class="shadow p-2 bg-danger rounded todo">
+              <label>{{ todo.todo_item }}</label>
+              <div>
+                <a (click)="delete(todo)"><i class="fas fa-times"></i></a>
+                <a routerLink='/todos/{{todo.id}}'><i class="fas fa-edit"></i></a> 
+              </div> 
+            </div>
+            <input type="checkbox" 
+              [checked]="todo.is_done" 
+              (click)="changeStateTodo(todo)"/>
+          </li>
+        </ul><br>
+      
+        <h5 class="todos" *ngIf="notPriority().length > 0"><strong>Todos</strong>:</h5> 
+        <ul class="shadow p-2 rounded my-todos" *ngFor="let todo of notPriority()" >
+          <li>
+            <label>{{todo.todo_item}}</label>
+            <div>
+              <a (click)="delete(todo)"><i class="fas fa-times"></i></a>
+              <a routerLink='/todos/{{todo.id}}'><i class="fas fa-edit"></i></a> 
+            </div> 
+          </li>
+        </ul>
+      </div>
+
+      <div class="todo-done">
+        <h5 class="text-info" *ngIf="doneTodos().length > 0"><strong>Done</strong>:</h5>
+        <ul class="shadow p-2 rounded bg-info" *ngFor="let todo of doneTodos()">
+          <li>
+            <label>{{todo.todo_item}}</label>
+            <a (click)="delete(todo)"><i class="fas fa-times"></i></a>
+          </li>
+        </ul>
+      </div>
+  </div>
+
+
+
+
+ 
+
+</div>
+

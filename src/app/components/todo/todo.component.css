@@ -1,0 +1,105 @@
+.container {
+    margin-top: 1rem;
+}
+
+form .post-todo {
+    display: flex;
+    
+}
+
+form .post-todo .check {
+    margin-top: 2rem;
+}
+
+.todo-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.todo-list {
+    width: 40%;
+}
+
+.todo-list .todo-labels {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.todos {
+    margin-bottom: 1rem;
+    
+}
+
+.todo-done {
+    width: 40%; 
+}
+
+.todo-list .priorities{
+    color: white;
+    margin-bottom: 3px;  
+}
+
+.todo-list .priorities li {
+    display: flex;
+    justify-content: space-between;
+}
+
+.todo-list .priorities li .todo {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+}
+
+.todo-list .priorities li .todo a {
+    margin-right: 1rem;
+    color: white;
+}
+
+.todo-list .priorities li .todo a:hover {
+    color: rgb(99, 40, 40);
+}
+
+.todo-list .my-todos li {
+    display: flex;
+    justify-content: space-between;
+}
+
+.todo-list .my-todos li div a {
+    margin-right: 1rem;
+    color: black;
+    
+}
+
+.todo-list .my-todos li div a:hover {
+    color: gray;
+       
+}
+
+.todo-done ul {
+    margin-bottom: 3px;
+
+}
+.todo-done ul li {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+    color: white;
+}
+
+.todo-done ul li a:hover {
+    color: rgb(46, 40, 99);
+}
+
+.text-info {
+    margin-bottom: 1.5rem;
+}
+
+
+
+
+
+
+
+
+
