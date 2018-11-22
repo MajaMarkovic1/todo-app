@@ -35,59 +35,59 @@ form .post-todo .check {
     width: 40%; 
 }
 
-.todo-list div .priorities{
+.todo-list .priorities{
     color: white;
     margin-bottom: 3px;  
 }
 
-.todo-list div .priorities li {
+.todo-list .priorities li {
     display: flex;
     justify-content: space-between;
 }
 
-.todo-list div .priorities li .todo {
+.todo-list .priorities li .todo {
     display: flex;
     justify-content: space-between;
     width: 80%;
 }
 
-.todo-list div .priorities li .todo a {
+.todo-list .priorities li .todo a {
     margin-right: 1rem;
     color: white;
 }
 
-.todo-list div .priorities li .todo a:hover {
+.todo-list .priorities li .todo a:hover {
     color: rgb(99, 40, 40);
 }
 
-.todo-list div .my-todos li {
+.todo-list .my-todos li {
     display: flex;
     justify-content: space-between;
 }
 
-.todo-list div .my-todos li div a {
+.todo-list .my-todos li div a {
     margin-right: 1rem;
     color: black;
     
 }
 
-.todo-list div .my-todos li div a:hover {
+.todo-list .my-todos li div a:hover {
     color: gray;
        
 }
 
-.todo-done div ul {
+.todo-done ul {
     margin-bottom: 3px;
 
 }
-.todo-done div ul li {
+.todo-done ul li {
     list-style-type: none;
     display: flex;
     justify-content: space-between;
     color: white;
 }
 
-.todo-done div ul li a:hover {
+.todo-done ul li a:hover {
     color: rgb(46, 40, 99);
 }
 

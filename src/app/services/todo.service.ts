@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Todo } from '../models/todo';
-import { Observable, of } from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable, of, throwError } from 'rxjs';
+import { HttpClient, HttpHeaders, HttpErrorResponse} from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
-
 
 @Injectable({
   providedIn: 'root'
@@ -23,56 +22,42 @@ export class TodoService {
   ) { }
 
   getTodos(): Observable<Todo[]> {
-    return this.http.get<Todo[]>(this.todosUrl)
-    .pipe(
-      catchError(this.handleError('getTodos', []))
-    );
+    return this.http.get<Todo[]>(this.todosUrl);
     
   }
 
   getTodo(id: number): Observable<Todo> {
     const url = `${this.todosUrl}/${id}`;
-    return this.http.get<Todo>(url).pipe(
-      catchError(this.handleError<Todo>(`getTodo id=${id}`))
-    );
+    return this.http.get<Todo>(url);
   }
 
   add(todo) {
     return this.http.post(this.todosUrl, todo, this.httpOptions).pipe(
-      catchError(this.handleError<Todo>('addedTodo'))
+      catchError(this.handleError)
     );
   }
 
 
   delete(todo){
     return this.http.delete(`${this.todosUrl}/${todo.id}`).pipe(
-      catchError(this.handleError<Todo>(`deleteTodo`))
+      catchError(this.handleError)
     );
   }
 
   update(todo){
     return this.http.put(`${this.todosUrl}/${todo.id}`, todo, this.httpOptions).pipe(
-      catchError(this.handleError<Todo>('updatedTodo'))
+      catchError(this.handleError)
     )
   }
 
   changeState(todo){
     return this.http.put(`${this.todosUrl}/${todo.id}`, todo).pipe(
-      catchError(this.handleError<Todo>('updatedTodo'))
+      catchError(this.handleError)
     )
   }
 
-  private handleError<T> (operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-
-      // TODO: send the error to remote logging infrastructure
-      //console.error(error); // log to console instead
-
-      // TODO: better job of transforming error for user consumption
-      //this.log(`${operation} failed: ${error.message}`);
-
-      // Let the app keep running by returning an empty result.
-      return of(result as T);
-    };
+  handleError(error: HttpErrorResponse){
+    return throwError(error || 'Server error')
   }
+
 }

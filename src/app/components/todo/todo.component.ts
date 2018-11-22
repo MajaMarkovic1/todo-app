@@ -17,6 +17,7 @@ export class TodoComponent implements OnInit {
     is_priority: false, 
     is_done: false
   };
+  err = {};
   
 
   constructor(
@@ -54,7 +55,10 @@ export class TodoComponent implements OnInit {
           is_priority: false, 
           is_done: false
         };
-      })
+      },
+      error => this.err = error.error.errors
+      // error => console.log(error.error.errors)
+    )
   }
 
   delete(todo: Todo): void {
